@@ -1,10 +1,12 @@
-package app;
+package app.opc;
+
+import app.AbstractTag;
 
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlRootElement;
 
 @XmlRootElement(name = "OpcClientAnalogItem")
-public class OpcAnalogItem extends AbstractTag{
+public class OpcAnalogItem extends AbstractTag {
 
     @XmlAttribute(name="Devisor")
     String devisor;
@@ -28,9 +30,9 @@ public class OpcAnalogItem extends AbstractTag{
 
     }
 
-    public OpcAnalogItem(String[] csvSrc) {
+    public OpcAnalogItem(String[] csvSrc, int ioa) {
 
-        super();
+        super(ioa);
 
         this.baseType = "AnalogVariableBase";
         this.dataClass = "Data";
@@ -39,7 +41,7 @@ public class OpcAnalogItem extends AbstractTag{
         this.multiplier = "1";
         this.name = csvSrc[1];
         this.offsetAdder = "0";
-        this.opcTag = csvSrc[1];
+        this.opcTag = PREFIX + csvSrc[1];
         this.ratio = "1";
         this.ratioType = "Primary";
         this.userMultiplier = "1";

@@ -1,4 +1,6 @@
-package app;
+package app.opc;
+
+import app.AbstractTag;
 
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlRootElement;
@@ -20,16 +22,16 @@ public class OpcDiscreteItem extends AbstractTag {
 
     }
 
-    public OpcDiscreteItem(String[] csvSrc) {
+    public OpcDiscreteItem(String[] csvSrc, int ioa) {
 
-        super();
+        super(ioa);
 
         this.baseType = "DiscreteVariableBase";
         this.dataClass = "Event";
         this.enumID = UUID.randomUUID().toString();
         this.friendlyName = csvSrc[1];
         this.name = csvSrc[1];
-        this.opcTag = csvSrc[1];
+        this.opcTag = PREFIX + csvSrc[1];
         switch (csvSrc[2]) {
             case "INTEGER":
                 this.variableType = "Uint16";
